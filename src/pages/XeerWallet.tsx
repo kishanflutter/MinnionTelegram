@@ -1,8 +1,6 @@
 // pages/Settings.tsx
 
-import { createAppKit } from '@reown/appkit/react';
-import { Ethers5Adapter } from '@reown/appkit-adapter-ethers5';
-import { mainnet, arbitrum } from '@reown/appkit/networks';
+
 import levelConfig from "@/config/level-config";
 import MetaMaskConnectButton from '@/components/metamaskwallet';
 import { TonConnectButton, TonConnectUIProvider } from '@tonconnect/ui-react';
@@ -17,16 +15,7 @@ const metadata = {
   icons: ['https://aarmascan.com/assets/configs/network_logo.svg'],
 }
 
-// AppKit ka instance create karna
-createAppKit({
-  adapters: [new Ethers5Adapter()],
-  metadata: metadata,
-  networks: [mainnet, arbitrum],
-  projectId,
-  features: {
-    analytics: true
-  }
-})
+
 
 function XeerWallet() {
 

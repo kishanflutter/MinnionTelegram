@@ -19,7 +19,7 @@ const isDisktop = import.meta.env.DEV
 
 function App() {
   const userStore = useUserStore();
-  const { levels, levelUp } = uesStore();
+  //const { levels, levelUp } = uesStore();
   //const { user, start_param } = useTelegramInitData();
   const [showSplashScreen, setShowSplashScreen] = useState(true);
   const [isFirstLoad, setIsFirstLoad] = useState(false);
@@ -31,41 +31,41 @@ function App() {
     webApp.expand();
   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      useUserStore.setState((state) => {
-        state.balance += state.production_per_hour / 3600;
-        return state;
-      });
-    }, 1000);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     useUserStore.setState((state) => {
+  //       state.balance += state.production_per_hour / 3600;
+  //       return state;
+  //     });
+  //   }, 1000);
 
-    return () => clearInterval(interval);
-  }, [userStore.production_per_hour]);
+  //   return () => clearInterval(interval);
+  // }, [userStore.production_per_hour]);
 
-  useEffect(() => {
-    if (!balance || !userStore.level?.level) return;
-    const userLevel = userStore.level.level;
-    const newLevels = levels.filter(
-      (level) => balance >= level.from_balance && level.level > userLevel
-    );
-    const maxLevel = newLevels.reduce(
-      (prev, current) => (prev.level > current.level ? prev : current),
-      newLevels[0]
-    );
-    if (
-      userStore.level?.level &&
-      maxLevel?.level &&
-      maxLevel.level > userStore.level.level
-    ) {
-      useUserStore.setState((state) => {
-        state.level = maxLevel;
-        state.max_energy += newLevels.length * levelUp.max_energy;
-        state.earn_per_tap += newLevels.length * levelUp.earn_per_tap;
-        return state;
-      });
-      toast.success(`You have leveled up to level ${maxLevel.level}`);
-    }
-  }, [balance, levels]);
+  // useEffect(() => {
+  //   if (!balance || !userStore.level?.level) return;
+  //   const userLevel = userStore.level.level;
+  //   const newLevels = levels.filter(
+  //     (level) => balance >= level.from_balance && level.level > userLevel
+  //   );
+  //   const maxLevel = newLevels.reduce(
+  //     (prev, current) => (prev.level > current.level ? prev : current),
+  //     newLevels[0]
+  //   );
+  //   if (
+  //     userStore.level?.level &&
+  //     maxLevel?.level &&
+  //     maxLevel.level > userStore.level.level
+  //   ) {
+  //     useUserStore.setState((state) => {
+  //       state.level = maxLevel;
+  //       state.max_energy += newLevels.length * levelUp.max_energy;
+  //       state.earn_per_tap += newLevels.length * levelUp.earn_per_tap;
+  //       return state;
+  //     });
+  //     toast.success(`You have leveled up to level ${maxLevel.level}`);
+  //   }
+  // }, [balance, levels]);
 
   // useEffect(() => {
   //   if (!user) return () => {};

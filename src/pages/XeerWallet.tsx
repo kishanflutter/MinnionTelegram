@@ -65,7 +65,7 @@ actionsConfiguration={{
        
       />
       <h1 className="mt-4 text-2xl font-bold text-center uppercase" >
-        AirDrop123
+        AirDrop
       </h1>
 
    

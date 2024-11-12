@@ -5,7 +5,7 @@ import Boost from "./pages/Boost";
 import Leaderboard from "./pages/Leaderboard";
 //import Earn from "./pages/Earn";
 import Friends from "./pages/Friends";
-import XeerWallet from "./pages/XeerWallet";
+//import XeerWallet from "./pages/XeerWallet";
 import BoosterPlanList from "./pages/BoosterPlanList";
 import ReportScreen from "./pages/Report";
 import TONWALLET from "./pages/TON_EXPIRMENT";
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
       },
       {
         path: "xeerwallet",
-        element: <XeerWallet />,
+        element: <TONWALLET />,
       },
      
     ],

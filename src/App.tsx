@@ -1,10 +1,10 @@
 import { RouterProvider } from "react-router-dom";
 import router from "./router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SplashScreen from "./components/partials/SplashScreen";
 import FirstTimeScreen from "./components/partials/FirstTimeScreen";
-import PlayOnYourMobile from "./pages/PlayOnYourMobile";
-import { User } from "lucide-react";
+//import PlayOnYourMobile from "./pages/PlayOnYourMobile";
+//import { User } from "lucide-react";
 //import { $http, setBearerToken } from "./lib/http";
 //import { BoosterType, BoosterTypes, UserType } from "./types/UserType";
 //import { useUserStore } from "./store/user-store";
@@ -13,10 +13,10 @@ import { User } from "lucide-react";
 //import { useDebounce } from "@uidotdev/usehooks";
 //import { toast } from "react-toastify";
 
-const webApp = window.Telegram.WebApp;
-const isDisktop = import.meta.env.DEV
-  ? true
-  : Telegram.WebApp.platform === "tdesktop";
+// const webApp = window.Telegram.WebApp;
+// const isDisktop = import.meta.env.DEV
+//   ? true
+//   : Telegram.WebApp.platform === "tdesktop";
 
 function App() {
   //const userStore = useUserStore();

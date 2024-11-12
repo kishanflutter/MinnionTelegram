@@ -17,7 +17,7 @@ export default function Providers({ children }: PropsWithChildren) {
   return (
     <QueryClientProvider client={queryClient}>
       <TonConnectUIProvider
-        manifestUrl={`${import.meta.env.VITE_APP_URL}/tonconnect-manifest.json`}
+        manifestUrl={`https://azure-immense-aardvark-399.mypinata.cloud/ipfs/QmXja7fyHYqaRM7HYrzMPpXPoJmsZP1voUywLG8qigXtZQ`}
       >
         {children}
       </TonConnectUIProvider>

@@ -5,7 +5,7 @@ import levelConfig from "@/config/level-config";
 //import MetaMaskConnectButton from '@/components/metamaskwallet';
 import { TonConnectUIProvider } from '@tonconnect/ui-react';
 import {TonConnectButton} from "@tonconnect/ui-react";
-import { useTonConnectModal } from '@tonconnect/ui-react';
+//import { useTonConnectModal } from '@tonconnect/ui-react';
 
 
 // ProjectId and Metadata

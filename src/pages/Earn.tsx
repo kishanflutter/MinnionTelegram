@@ -7,8 +7,8 @@ import DailyDrawer from "@/components/DailyDrawer";
 import CheckIcon from "@/components/icons/CheckIcon";
 import { useQuery } from "@tanstack/react-query";
 import { $http } from "@/lib/http";
-import { cn } from "@/lib/utils";
-import { uesStore } from "@/store";
+//import { cn } from "@/lib/utils";
+//import { uesStore } from "@/store";
 import LoadingPage from "@/components/LoadingPage";
 import ReferralTaskDrawer from "@/components/ReferralTaskDrawer";
 import levelConfig from "@/config/level-config";
@@ -16,34 +16,36 @@ import { TonConnectButton } from "@tonconnect/ui-react";
 import { Box } from "@mui/material";
 
 export default function Earn() {
-  const { totalDailyRewards } = uesStore();
+ // const { totalDailyRewards } = uesStore();
   const [activeTask, setActiveTask] = useState<TaskType | null>(null);
   const [isTaskDrawerOpen, setIsTaskDrawerOpen] = useState(false);
   const [isDailyDrawerOpen, setIsDailyDrawerOpen] = useState(false);
   const [isReferralTaskDrawerOpen, setIsReferralTaskDrawerOpen] =
     useState(false);
-  const [activeReferralTask, setActiveReferralTask] =
+  // const [activeReferralTask, setActiveReferralTask] =
+  //   useState<ReferralTaskType | null>(null);
+    
+    const [activeReferralTask] =
     useState<ReferralTaskType | null>(null);
-
   const { data, isLoading } = useQuery({
     queryKey: ["tasks"],
     queryFn: () => $http.$get<TaskType[]>("/clicker/tasks"),
   });
 
-  const referralTasks = useQuery({
-    queryKey: ["referral-tasks"],
-    queryFn: () => $http.$get<ReferralTaskType[]>("/clicker/referral-tasks"),
-  });
+  // const referralTasks = useQuery({
+  //   queryKey: ["referral-tasks"],
+  //   queryFn: () => $http.$get<ReferralTaskType[]>("/clicker/referral-tasks"),
+  // });
 
   const videoTasks = useMemo(
     () => data?.filter((task) => task.type === "video") || [],
     [data]
   );
 
-  const otherTasks = useMemo(
-    () => data?.filter((task) => task.type === "other") || [],
-    [data]
-  );
+  // const otherTasks = useMemo(
+  //   () => data?.filter((task) => task.type === "other") || [],
+  //   [data]
+  // );
 
   if (isLoading) return <LoadingPage />;
 

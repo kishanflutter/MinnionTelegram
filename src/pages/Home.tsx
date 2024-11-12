@@ -83,14 +83,14 @@ export default function Home() {
     </div>
   );
 }
-const containerStyle: React.CSSProperties = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  height: '70vh', // Full viewport height
-};
+// const containerStyle: React.CSSProperties = {
+//   display: 'flex',
+//   justifyContent: 'center',
+//   alignItems: 'center',
+//   height: '70vh', // Full viewport height
+// };
 
-const centeredDivStyle: React.CSSProperties = {
-  padding: '20px',
-  borderRadius: '8px',
-};
+// const centeredDivStyle: React.CSSProperties = {
+//   padding: '20px',
+//   borderRadius: '8px',
+// };

@@ -3,33 +3,34 @@ import router from "./router";
 import { useEffect, useState } from "react";
 import SplashScreen from "./components/partials/SplashScreen";
 import FirstTimeScreen from "./components/partials/FirstTimeScreen";
-import { $http, setBearerToken } from "./lib/http";
-import { BoosterType, BoosterTypes, UserType } from "./types/UserType";
-import { useUserStore } from "./store/user-store";
-import { uesStore } from "./store";
 import PlayOnYourMobile from "./pages/PlayOnYourMobile";
-import { useDebounce } from "@uidotdev/usehooks";
-import { toast } from "react-toastify";
-import useTelegramInitData from "./hooks/useTelegramInitData";
+import { User } from "lucide-react";
+//import { $http, setBearerToken } from "./lib/http";
+//import { BoosterType, BoosterTypes, UserType } from "./types/UserType";
+//import { useUserStore } from "./store/user-store";
+//import { uesStore } from "./store";
+//import PlayOnYourMobile from "./pages/PlayOnYourMobile";
+//import { useDebounce } from "@uidotdev/usehooks";
+//import { toast } from "react-toastify";
 
 const webApp = window.Telegram.WebApp;
 const isDisktop = import.meta.env.DEV
-  ? false
+  ? true
   : Telegram.WebApp.platform === "tdesktop";
 
 function App() {
-  const userStore = useUserStore();
+  //const userStore = useUserStore();
   //const { levels, levelUp } = uesStore();
   //const { user, start_param } = useTelegramInitData();
   const [showSplashScreen, setShowSplashScreen] = useState(true);
   const [isFirstLoad, setIsFirstLoad] = useState(false);
-  const balance = useDebounce(userStore.balance, 500);
+ // const balance = useDebounce(userStore.balance, 500);
 
-  useEffect(() => {
-    webApp.setHeaderColor("#000");
-    webApp.setBackgroundColor("#000");
-    webApp.expand();
-  }, []);
+  // useEffect(() => {
+  //   webApp.setHeaderColor("#000");
+  //   webApp.setBackgroundColor("#000");
+  //   webApp.expand();
+  // }, []);
 
   // useEffect(() => {
   //   const interval = setInterval(() => {
@@ -121,9 +122,13 @@ function App() {
   setShowSplashScreen(false);
   }, 1000);
 
-  //if (!user || isDisktop) return <PlayOnYourMobile />;
+ 
 
   if (showSplashScreen) return <SplashScreen />;
+
+
+  //return <PlayOnYourMobile />;
+  //if (isDisktop) return <PlayOnYourMobile />;
 
   if (isFirstLoad)
     return <FirstTimeScreen startGame={() => setIsFirstLoad(false)} />;

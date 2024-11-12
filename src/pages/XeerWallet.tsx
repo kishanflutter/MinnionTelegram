@@ -2,18 +2,18 @@
 
 
 import levelConfig from "@/config/level-config";
-import MetaMaskConnectButton from '@/components/metamaskwallet';
-import { TonConnectButton, TonConnectUIProvider } from '@tonconnect/ui-react';
+//import MetaMaskConnectButton from '@/components/metamaskwallet';
+import { THEME, TonConnectButton, TonConnectUIProvider } from '@tonconnect/ui-react';
 
 
 // ProjectId and Metadata
-const projectId = '2d971f7eeae877834f21751f580991e1'
-const metadata = {
-  name: 'XEER',
-  description: 'Wallet Connect',
-  url: 'https://aarmascan.com/',
-  icons: ['https://aarmascan.com/assets/configs/network_logo.svg'],
-}
+// const projectId = '2d971f7eeae877834f21751f580991e1'
+// const metadata = {
+//   name: 'XEER',
+//   description: 'Wallet Connect',
+//   url: 'https://aarmascan.com/',
+//   icons: ['https://aarmascan.com/assets/configs/network_logo.svg'],
+// }
 
 
 
@@ -24,8 +24,8 @@ function XeerWallet() {
   
   return (
 
-<TonConnectUIProvider manifestUrl='https://drive.google.com/file/d/1MinW84e3-irjZ5J4kykoqGv44qGfgo2L/view?usp=sharing' 
-
+<TonConnectUIProvider manifestUrl='https://eeb8-182-69-165-216.ngrok-free.app/tonconnect-manifest.json' 
+uiPreferences={{ theme: THEME.LIGHT }}
 walletsListConfiguration={{
   includeWallets: [
     {
@@ -39,63 +39,6 @@ walletsListConfiguration={{
       platforms: ["chrome", "android"]
     },
     {
-      appName: "nicegramWallet",
-      name: "Nicegram Wallet",
-      imageUrl: "https://static.nicegram.app/icon.png",
-      aboutUrl: "https://nicegram.app",
-      universalLink: "https://nicegram.app/tc",
-      deepLink: "nicegram-tc://",
-      jsBridgeKey: "nicegramWallet",
-      bridgeUrl: "https://bridge.tonapi.io/bridge",
-      platforms: ["ios", "android"]
-    },
-    {
-      appName: "tokenpocket",
-      name: "TokenPocket",
-      imageUrl: "https://hk.tpstatic.net/logo/tokenpocket.png",
-      aboutUrl: "https://tokenpocket.pro",
-      jsBridgeKey: "tokenpocket",
-      platforms: ["ios", "android"]
-    },
-    {
-      appName: "dewallet",
-      name: "DeWallet",
-      imageUrl: "https://raw.githubusercontent.com/delab-team/manifests-images/main/WalletAvatar.png",
-      aboutUrl: "https://delabwallet.com",
-      universalLink: "https://t.me/dewallet?attach=wallet",
-      bridgeUrl: "https://bridge.dewallet.pro/bridge",
-      platforms: ["ios", "android", "macos", "windows", "linux"]
-    },
-    {
-      appName: "BitgetWeb3",
-      name: "BitgetWeb3",
-      imageUrl: "https://img.bitgetimg.com/image/third/1723701408284.png",
-      aboutUrl: "https://www.bitget.com",
-      universalLink: "https://t.me/BitgetOfficialBot?attach=wallet",
-      bridgeUrl: "https://ton-connect-bridge.bgwapi.io/bridge",
-      platforms: ["ios", "android", "windows", "macos", "linux"]
-    },
-    {
-      appName: "cdcTonWallet",
-      name: "Crypto.com DeFi Wallet",
-      imageUrl: "https://apro-ncw-api-file.crypto.com/wallet/logo",
-      aboutUrl: "https://crypto.com/defi-wallet",
-      universalLink: "https://wallet.crypto.com/deeplink/ton-connect",
-      deepLink: "dfw://",
-      jsBridgeKey: "cdcTonWallet",
-      bridgeUrl: "https://wallet.crypto.com/sse/tonbridge",
-      platforms: ["ios", "android", "chrome"]
-    },
-    {
-      appName: "tobi",
-      name: "Tobi",
-      imageUrl: "https://app.tobiwallet.app/icons/logo.png",
-      aboutUrl: "https://tobi.fun",
-      universalLink: "https://t.me/TobiCopilotBot?attach=wallet",
-      bridgeUrl: "https://ton-bridge.tobiwallet.app/bridge",
-      platforms: ["ios", "android", "macos", "windows", "linux"]
-    },
-    {
       appName: "trustwalletTon",
       name: "Trust",
       imageUrl: "https://assets-cdn.trustwallet.com/dapps/trust.logo.png",
@@ -104,27 +47,12 @@ walletsListConfiguration={{
       jsBridgeKey: "trustwalletTon",
       platforms: ["chrome", "ios", "android"]
     },
-    {
-      appName: "bitgetWalletLite",
-      name: "Bitget Wallet Lite",
-      imageUrl: "https://raw.githubusercontent.com/bitgetwallet/download/main/logo/png/bitget_wallet_lite_logo.png",
-      aboutUrl: "https://web3.bitget.com",
-      universalLink: "https://t.me/BitgetWallet_TGBot?attach=wallet",
-      bridgeUrl: "https://ton-connect-bridge.bgwapi.io/bridge",
-      platforms: ["ios", "android", "macos", "windows", "linux"]
-    },
-    {
-      appName: "onekey",
-      name: "OneKey",
-      imageUrl: "https://common.onekey-asset.com/logo/onekey-x288.png",
-      aboutUrl: "https://onekey.so",
-      jsBridgeKey: "onekeyTonWallet",
-      platforms: ["chrome"]
-    }
+   
+   
   ]
 }}
 actionsConfiguration={{
-  twaReturnUrl: 'https://t.me/tc_twa_demo_bot/start'
+  twaReturnUrl: 'https://t.me/XeerMoobilebot'
 }}
 
 >

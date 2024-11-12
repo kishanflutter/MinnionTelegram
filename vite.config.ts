@@ -6,8 +6,8 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   plugins: [react()],
   server: {
-    host: true, // Enable access over network IP
-   // https: { key: fs.readFileSync(path.resolve(__dirname, 'localhost-key.pem')), cert: fs.readFileSync(path.resolve(__dirname, 'localhost.pem')), },
+    host:true, // Enable access over network IP
+    // https: { key: fs.readFileSync(path.resolve(__dirname, 'server.key')), cert: fs.readFileSync(path.resolve(__dirname, 'server.crt')), },
    fs: {
     allow: ['../sdk', './'],
   },

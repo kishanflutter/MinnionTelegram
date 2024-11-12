@@ -24,7 +24,7 @@ function XeerWallet() {
   
   return (
 
-<TonConnectUIProvider manifestUrl='https://eeb8-182-69-165-216.ngrok-free.app/tonconnect-manifest.json' 
+<TonConnectUIProvider manifestUrl='https://minnion-telegram-iroa.vercel.app/tonconnect-manifest.json' 
 uiPreferences={{ theme: THEME.LIGHT }}
 walletsListConfiguration={{
   includeWallets: [

@@ -3,7 +3,9 @@
 
 import levelConfig from "@/config/level-config";
 //import MetaMaskConnectButton from '@/components/metamaskwallet';
-import { THEME, TonConnectButton, TonConnectUIProvider } from '@tonconnect/ui-react';
+import { TonConnectUIProvider } from '@tonconnect/ui-react';
+import {TonConnectButton} from "@tonconnect/ui-react";
+import { useTonConnectModal } from '@tonconnect/ui-react';
 
 
 // ProjectId and Metadata
@@ -24,8 +26,7 @@ function XeerWallet() {
   
   return (
 
-<TonConnectUIProvider manifestUrl='https://minnion-telegram-iroa.vercel.app/tonconnect-manifest.json' 
-uiPreferences={{ theme: THEME.LIGHT }}
+<TonConnectUIProvider manifestUrl='https://azure-immense-aardvark-399.mypinata.cloud/ipfs/QmXja7fyHYqaRM7HYrzMPpXPoJmsZP1voUywLG8qigXtZQ' 
 walletsListConfiguration={{
   includeWallets: [
     {
@@ -37,18 +38,7 @@ walletsListConfiguration={{
       jsBridgeKey: "tonwallet",
       bridgeUrl: "https://bridge.tonapi.io/bridge",
       platforms: ["chrome", "android"]
-    },
-    {
-      appName: "trustwalletTon",
-      name: "Trust",
-      imageUrl: "https://assets-cdn.trustwallet.com/dapps/trust.logo.png",
-      aboutUrl: "https://trustwallet.com/about-us",
-      bridgeUrl: "https://tonconnect.trustwallet.com/bridge",
-      jsBridgeKey: "trustwalletTon",
-      platforms: ["chrome", "ios", "android"]
-    },
-   
-   
+    }
   ]
 }}
 actionsConfiguration={{
@@ -79,21 +69,11 @@ actionsConfiguration={{
       </h1>
 
    
- <TonConnectButton>
+ <TonConnectButton/>
   
- </TonConnectButton>
      
      
-    
-      {/* <MetaMaskConnectButton /> */}
-      {/* <w3m-button /> */}
 
-        {/* <button style={styles.button} onClick={handleConnectWallet}>
-          Connect Wallet
-        </button> */}
-        {/* <button style={styles.button} onClick={() => open({ view: 'Networks' })}>
-          Open Network 
-        </button> */}
 
 <label style={styles.addressLabelyello}>
          

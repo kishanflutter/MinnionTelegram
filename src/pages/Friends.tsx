@@ -11,21 +11,23 @@ import { useCopyToClipboard } from "@uidotdev/usehooks";
 import { useMemo, useState } from "react";
 import { toast } from "react-toastify";
 import levelConfig from "@/config/level-config";
+import { useUser } from "@/TelegramUserContext";
 
 const shareMessage = encodeURI(
-  "Play Cool Frog with me!"
+  "Minnion Community with me!"
 );
 
 export default function Friends() {
   const [, copy] = useCopyToClipboard();
-  const { telegram_id } = useUserStore();
   const { referral, levels } = uesStore();
+  const { user } = useUser();
+
 
   const [showMoreBonuses, setShowMoreBonuses] = useState(false);
 
   const referralLink = useMemo(
-    () => `${import.meta.env.VITE_BOT_URL}/?startapp=ref${telegram_id}`,
-    [telegram_id]
+    () => `${import.meta.env.VITE_BOT_URL}/?start=ref${user!.id.toString()}`,
+    [user!.id.toString()]
   );
 
   // const referredUsers = useQuery({

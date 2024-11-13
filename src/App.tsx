@@ -1,8 +1,13 @@
 import { RouterProvider } from "react-router-dom";
 import router from "./router";
-import { useState } from "react";
+//import { useState } from "react";
 import SplashScreen from "./components/partials/SplashScreen";
 import FirstTimeScreen from "./components/partials/FirstTimeScreen";
+import React, { useEffect, useState } from 'react';
+
+
+import axios from 'axios';
+import { UserProvider } from "./TelegramUserContext";
 //import PlayOnYourMobile from "./pages/PlayOnYourMobile";
 //import { User } from "lucide-react";
 //import { $http, setBearerToken } from "./lib/http";
@@ -24,6 +29,15 @@ function App() {
   //const { user, start_param } = useTelegramInitData();
   const [showSplashScreen, setShowSplashScreen] = useState(true);
   const [isFirstLoad, setIsFirstLoad] = useState(false);
+
+
+
+
+
+
+ 
+
+
  // const balance = useDebounce(userStore.balance, 500);
 
   // useEffect(() => {
@@ -118,6 +132,11 @@ function App() {
   // }, [user]);
 
 
+
+
+
+
+ 
  setInterval(() => {
   setShowSplashScreen(false);
   }, 1000);
@@ -127,14 +146,26 @@ function App() {
   if (showSplashScreen) return <SplashScreen />;
 
 
+  return (
+    <UserProvider>
+    <RouterProvider router={router} />;
+    {/* Baaki components bhi yahan ho sakte hain */}
+  </UserProvider>
+  );
+
+  //return <RouterProvider router={router} />;
+
+  // if (isFirstLoad)
+  //   return <FirstTimeScreen startGame={() => setIsFirstLoad(false)} />;
+  //  if(telegramuser!=null)
+  //      return <RouterProvider router={router} />;
   //return <PlayOnYourMobile />;
   //if (isDisktop) return <PlayOnYourMobile />;
 
-  if (isFirstLoad)
-    return <FirstTimeScreen startGame={() => setIsFirstLoad(false)} />;
-  //return <FirstTimeScreen startGame={() => setIsFirstLoad(false)} />;
-
-  return <RouterProvider router={router} />;
+  //  if (isFirstLoad)
+  //   return <FirstTimeScreen startGame={() => setIsFirstLoad(false)} />;
+ 
+        
 }
 
 export default App;

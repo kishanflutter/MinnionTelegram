@@ -1,8 +1,9 @@
 import DashBoardWidget from "@/components/DashBoardWidget";
 import UserTap from "../components/UserTap";
-import { useUserStore } from "../store/user-store";
 import UserGameDetails from "@/components/UserGameDetails";
 import levelConfig from "@/config/level-config";
+import { useState } from "react";
+import { useUser } from "@/TelegramUserContext";
 //import { uesStore } from "@/store";
 
 
@@ -10,27 +11,74 @@ import levelConfig from "@/config/level-config";
 
 
 export default function Home() {
-  const user = useUserStore();
+  const { user } = useUser();
+
+  //const user = useUserStore();
+  // const [telegramuser, setUser] = useState<TelegramUserDetails | null>(null);
+
+  // const saveduser = localStorage.getItem('telegramuserDetails');
+  // if (saveduser) {
+  //   setUser(JSON.parse(saveduser));
+  // }
+
   //const { maxLevel } = uesStore();
   return (
     <div
       className="flex-1 px-5 pb-20 bg-center bg-cover"
       style={{
-        backgroundImage: `url(${levelConfig.bg[user?.level?.level || 1]})`,
+        backgroundImage: `url(${levelConfig.bg[1]})`,
       }}
     >
       <header className="flex items-center justify-between mt-4">
-        <div className="flex items-center gap-2 px-3 py-2 border-2 rounded-full bg-black/20 border-white/10">
-          <img
-            src="/images/coin.png"
+
+      {/* <img
+            src={localStorage.getItem('profilePIC')?.toString()} 
             alt="user-avatar"
             className="object-cover w-8 h-8 rounded-full"
           />
           <p className="text-sm font-medium uppercase" style={{color : "black"}}>
-            {user?.first_name} {user?.last_name}
+            {localStorage.getItem('first_name')?.toString()}</p> */}
+  
+      {user ? (
+        <div className="flex items-center gap-2 px-3 py-2 border-2 rounded-full bg-black/20 border-white/10">
+          <img
+            src={user.photoUrl==""?"/images/coin.png":user.photoUrl} 
+
+            alt="user-avatar"
+            className="object-cover w-8 h-8 rounded-full"
+          />
+          
+          {/* <p className="text-sm font-medium uppercase" style={{color : "black"}}>
+            {user!.id}           </p> */}
+          <p className="text-sm font-medium uppercase" style={{color : "black"}}>
+            {user.first_name} {user.last_name}
           </p>
         </div>
+      ):
+      (
+        <p>Loading...</p>
+      )
+      }
       </header>
+
+{/* <p>logdetails:{logdetails}</p>
+
+      {telegramuser ? (
+        <div>
+          <h2>User Details:</h2>
+          
+          <p>ID: {telegramuser.id}</p>
+          <p>First Name: {telegramuser.first_name}</p>
+          {telegramuser.last_name && <p>Last Name: {telegramuser.last_name}</p>}
+          {telegramuser.username && <p>Username: {telegramuser.username}</p>}
+          {telegramuser.photoUrl && (
+            <img src={telegramuser.photoUrl} alt={`${telegramuser.first_name}'s profile`} />
+          )}
+        </div>
+      ) : (
+        <p>Loading...</p>
+      )} */}
+
       <UserGameDetails className="mt-6" />
       
       {/* <div className=""> */}

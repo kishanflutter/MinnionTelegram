@@ -35,7 +35,7 @@ export default function Missions() {
     <div
     className="flex-1 px-5 pb-20 bg-center bg-cover"
     style={{
-      backgroundImage: `url(${levelConfig.bg[user?.level?.level || 1]})`,
+      backgroundImage: `url(${levelConfig.bg[1]})`,
     }}
   >
      

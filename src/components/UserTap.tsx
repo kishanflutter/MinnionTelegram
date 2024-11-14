@@ -6,6 +6,7 @@ import { useDebounce } from "@uidotdev/usehooks";
 import { $http } from "@/lib/http";
 import levelConfig from "@/config/level-config";
 import { count } from "console";
+import { Bold } from "lucide-react";
 
 export default function UserTap(props: React.HTMLProps<HTMLDivElement>) {
   const userAnimateRef = useRef<HTMLDivElement | null>(null);
@@ -97,10 +98,10 @@ export default function UserTap(props: React.HTMLProps<HTMLDivElement>) {
           onPointerUp={tabMe}
         >
           <img
-            src={levelConfig.frogs[user.level?.level || 1]}
+            src={levelConfig.frogs[1]}
             alt="level image"
-            className="object-contain max-w-full w-80 h-80"
-            style={{ filter: levelConfig.filter[user.level?.level || 1] }}
+            className="object-contain max-w-full max-h-full w-60 h-60"
+            //style={{ filter: levelConfig.filter[1] }}
           />
         </button>
       </div>
@@ -120,17 +121,17 @@ export default function UserTap(props: React.HTMLProps<HTMLDivElement>) {
       </div>
 
       <div style={{ width: '100%', maxWidth: '500px', margin: '10px auto' }}>
-      <div style={{ border: '1px solid #ffff', padding: '3px', borderRadius: '3px' }}>
+      <div style={{ border: '3px solid #ffff', padding: '3px', borderRadius: '10px' }}>
         <div
           style={{
             width: `${progress}%`,
-            backgroundColor: '#12588b',
+            backgroundColor: '#000',
             height: '10px',
-            borderRadius: '3px',
+            borderRadius: '10px',
           }}
         ></div>
       </div>
-      <div style={{color : "black"}}>
+      <div style={{color : "#ffff" , fontWeight: "bold" , fontSize:'18px' , textAlign: "right" , marginRight: "5px"}}>
         {clicksCount>=totalcoin?totalcoin:clicksCount} / {totalcoin}
       </div>
   

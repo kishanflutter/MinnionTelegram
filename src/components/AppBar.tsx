@@ -5,17 +5,21 @@ const links = [
   { name: "Explore", link: "/", image: "/images/explore.png" },
   { name: "Missions", link: "/missions", image: "/images/missions.png" },
   { name: "Friends", link: "/friends", image: "/images/friends.png" },
-  { name: "Report", link: "/earn", image: "/images/bounty.png" },
-  { name: "Earn", link: "/xeerwallet", image: "/images/AIRDROP.png" },
+  { name: "Report", link: "/earn", image: "/images/report.png" },
+  { name: "Earn", link: "/xeerwallet", image: "/images/earn_money_icon.png" },
 
 ];
 
 export default function AppBar() {
   const { pathname } = useLocation();
   return (
-    <div className="fixed left-0 z-10 w-full px-5 py-0 bottom-2" style={{color : "black"}}>
-      <div className="flex items-center w-full p-2 gap-2 max-w-lg mx-auto rounded-[35px] bg-[linear-gradient(180deg,rgba(243,161,85,0.00)_66.37%,rgba(243,161,85,0.05)_100%)] backdrop-blur-3xl">
-        {links.map((link, key) => (
+    <div className="fixed left-0 z-10 w-full px-5 py-0 bottom-2">
+
+
+<div className="card" style={{backgroundColor:'white'}}>
+<div className="flex flex-row" >
+        {
+        links.map((link, key) => (
           <Link
             key={key}
             to={link.link}
@@ -35,15 +39,16 @@ export default function AppBar() {
               />
             )}
             <span>{link.name}</span>
-            <div
+            {/* <div
               className={cn(
-                "absolute hidden -bottom-1 left-1/2 -translate-x-1/2 bg-[#000] rounded-sm shadow-[0px_0px_4px_0px_#000] h-1 w-4/5",
+                "absolute hidden -bottom-1 left-1/2 -translate-x-1/2 bg-[#000] rounded-sm shadow-[0px_0px_1px_0px_#000] h-1 w-4/5",
                 pathname === link.link && "block"
               )}
-            />
+            /> */}
           </Link>
         ))}
+        </div>
       </div>
-    </div>
+   </div>
   );
 }

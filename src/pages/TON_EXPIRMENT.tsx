@@ -76,7 +76,7 @@ function  TONWALLET  () {
     }
   
     return (
-      <main className="flex min-h-screen flex-col items-center justify-center">
+     // <main className="flex min-h-screen flex-col items-center justify-center">
            <div
     className="flex-1 px-5 pb-20 bg-center bg-cover"
     style={{
@@ -132,7 +132,7 @@ function  TONWALLET  () {
 
         </div>
         </div>
-      </main>
+     // </main>
     );
 };
 

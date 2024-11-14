@@ -54,65 +54,60 @@ export default function BoosterPlanList() {
     </div>
     */}
 
-<div className="mt-10" style={{color : "black"}}>
+{/* <div className="mt-10" style={{color : "black"}}> */}
       
-          <div className="mt-6">
-            <div className="grid grid-cols-2 gap-3">
-              { (
-               
-                data.map((item, index) => (
-                  <div
-                   
-                    className={cn(
-                      "flex flex-col py-3 px-3 bg-[#000]/10 rounded-xl cursor-pointer"  ,
-                      
-                   
-                    )}
-                   
-                  >
-                    <div className="flex items-start flex-1 space-x-3" style={{color : "black"}}>
-                    
-                      <div className="flex flex-col">
-                        <p className="text-[10px] font-bold"> Booster Price : {item.boostPrice}</p>
-                        <p className="mt-1 text-[10px] font-medium">
-                          Total Claim : {item.totalClaim}
-                        </p>
-                        <p className="mt-1 text-[10px] font-medium">
-                          Daily Claim Limit : {item.dailyClaimLimit}
-                        </p>
-                        <p className="mt-1 text-[10px] font-medium">
-                          Points : {item.points}
-                        </p>
-                        <p className="mt-1 text-[10px] font-medium">
-                          Days : {item.days}
-                        </p>
-                        {/* <Price
-                          amount={
-                            mission.production_per_hour ||
-                            `+${mission.next_level?.production_per_hour || 0}`
-                          }
-                          className="mt-2 text-[10px]" style={{color : "black"}}
-                        /> */}
-                      </div>
-                    </div>
-                    {(
-                      <div className="pt-3 mt-3 border-t border-dashed border-black/10">
-                        <div className="flex items-center space-x-3">
-                          <p className="w-16 text-xs font-bold">
-                            Plan {index+1}
-                          </p>
-                        
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ))
-              )}
+          
+<div className="grid grid-cols-2 gap-4 p-4 ">
+
+
+             
+
+{data.map((item, index) => (
+     <div
+     key={index}
+     className={cn(
+       "relative flex flex-col bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer",
+       index % 2 === 0 ? "transform -translate-x-4" : "transform translate-x-4"
+     )}
+     style={{
+       border: "4px solid #8B0000", // Border color ke liye
+       padding: "10px",
+       marginTop: "30px",
+       borderTopLeftRadius: index % 2 === 0 ? 20 : 0,
+       borderTopRightRadius: index % 2 !== 0 ? 20 : 0,
+       borderBottomLeftRadius: index % 2 === 0 ? 0 : 20,
+       borderBottomRightRadius: index % 2 !== 0 ? 0 : 20,
+     }}
+   >
+     <div className="flex items-start flex-1 space-x-3 p-4" style={{ color: "black" }}>
+       <div className="flex flex-col">
+         <p className="text-sm font-bold">Booster Price: {item.boostPrice}</p>
+         <p className="mt-1 text-sm font-medium">Total Claim: {item.totalClaim}</p>
+         <p className="mt-1 text-sm font-medium">Daily Claim Limit: {item.dailyClaimLimit}</p>
+         <p className="mt-1 text-sm font-medium">Points: {item.points}</p>
+         <p className="mt-1 text-sm font-medium">Days: {item.days}</p>
+       </div>
+     </div>
+     <div className="pt-3 mt-3 border-t border-dashed border-black/10">
+       <div className="flex items-center space-x-3">
+         <p className="w-16 text-xs font-bold">Plan {index + 1}</p>
+       </div>
+     </div>
+     {/* Outer shadow effect for the border */}
+     <div
+       className="absolute inset-0 border-4 rounded-lg"
+       style={{
+         borderColor: "#8B0000",
+         transform: index % 2 === 0 ? "translate(-10px, -10px)" : "translate(10px, 10px)"
+       }}
+     />
+   </div>
+  ))}
             </div>
           </div>
-        </div>
+        // </div>
 
-    </div>
+   
   );
   
 }

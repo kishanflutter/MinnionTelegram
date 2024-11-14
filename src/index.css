@@ -76,6 +76,45 @@
   animation: user-tap-animate 1s ease 0s 1;
 }
 
+
+.emboss {
+ 
+  /* background: #EDF3F9; */
+  box-shadow: -7px -7px 16px 0 #000000, 7px 7px 10px -4px rgba(116,150,179,0.27);
+  border-radius: 16px;
+ 
+  /* display: block; */
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border-radius: 16px;
+  background: linear-gradient(
+    to bottom,
+    #faaf35
+    #FFFFFF
+
+    /* rgba(255, 255, 255, .75), */
+    /* rgba(255, 255, 255, .32) */
+  );
+  box-shadow:
+    inset 4px 4px 5px 0 rgba(255, 255, 255, .25),
+    inset -4px -4px 5px 0 rgba(0, 0, 0, 0.125);
+    
+    /* 0 0 10px 1px rgba(0, 0, 0, 0.25); */
+  backdrop-filter: blur(1em);
+}
+
+.emboss-inner {
+ 
+  /* background: #EDF3F9; */
+  box-shadow: inset 1px 1px 7px 0 rgba(116,150,179,0.32), inset -4px -4px 6px 0 #FFFFFF;
+  border-radius: 10px;
+}
+
 @font-face {
   font-family: 'zubilo-black';
   src: url('./assets/fonts/zubilo-black.ttf') format('truetype');

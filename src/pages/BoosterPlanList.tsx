@@ -4,6 +4,8 @@ import levelConfig from "@/config/level-config";
 import { wrap } from "module";
 import { cn, compactNumber } from "@/lib/utils";
 
+import React, { useState } from 'react';
+import BottomSheetModal from "@/components/BottomSheetModal";
 
 const data: BoosterPlanItem[] = [
     {
@@ -40,6 +42,25 @@ const data: BoosterPlanItem[] = [
 
 export default function BoosterPlanList() {
  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalData, setModalData] = useState("Yaha modal ka content hoga");
+  const [selectedUser, setSelectedUser] = useState<BoosterPlanItem | null>(null);
+
+
+  // const handleOpenModal = () => {
+  //   setModalData("Yeh hai modal ka data"); // Yaha pe data update kar sakte hain
+  //   setIsModalOpen(true);
+  // };
+
+  const handleOpenModal = (user: BoosterPlanItem) => {
+    setSelectedUser(user);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div
     className="flex-1 px-5 pb-20 bg-center bg-cover"
@@ -65,6 +86,7 @@ export default function BoosterPlanList() {
 {data.map((item, index) => (
      <div
      key={index}
+     onClick={() => handleOpenModal(item)}
      className={cn(
        "relative flex flex-col bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer",
        index % 2 === 0 ? "transform -translate-x-4" : "transform translate-x-4"
@@ -79,6 +101,9 @@ export default function BoosterPlanList() {
        borderBottomRightRadius: index % 2 !== 0 ? 0 : 20,
      }}
    >
+
+
+
      <div className="flex items-start flex-1 space-x-3 p-4" style={{ color: "black" }}>
        <div className="flex flex-col">
          <p className="text-sm font-bold">Booster Price: {item.boostPrice}</p>
@@ -101,9 +126,22 @@ export default function BoosterPlanList() {
          transform: index % 2 === 0 ? "translate(-10px, -10px)" : "translate(10px, 10px)"
        }}
      />
+   
+  
    </div>
+
+   
   ))}
+
+
+  
             </div>
+
+             <BottomSheetModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        data={selectedUser}
+      />
           </div>
         // </div>
 

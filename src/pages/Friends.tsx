@@ -25,11 +25,11 @@ export default function Friends() {
 
   const [showMoreBonuses, setShowMoreBonuses] = useState(false);
 
-  const referralLink = useMemo(
-    () => `${import.meta.env.VITE_BOT_URL}/?start=ref${user!.id.toString()}`,
-    [user!.id.toString()]
-  );
-
+  // const referralLink = useMemo(
+  //   () => `${import.meta.env.VITE_BOT_URL}/?start=ref${user!.id.toString()}`,
+  //   [user!.id.toString()]
+  // );
+  const referralLink = "";
   // const referredUsers = useQuery({
   //   queryKey: ["referredUsers"],
   //   queryFn: () => $http.$get<PaginationResponse<UserType>>("/referred-users"),
@@ -102,7 +102,7 @@ export default function Friends() {
 
                         </tr>
                       </thead>
-                      <tbody>
+                      {/* <tbody>
                         {levels
                           .filter((item) => referral.base.levelUp[item.level])
                           .map((item, key) => (
@@ -115,10 +115,7 @@ export default function Friends() {
                                 <div className="flex items-center justify-end gap-1">
                                  
                                   <span className="text-xs font-medium text-primary" style={{color : "black"}}>
-                                    {/* {referral.base.levelUp[
-                                      item.level
-                                    ].toLocaleString()}
-                                     */}
+                                  
                                   {(
                                      0
                                     ).toLocaleString()}
@@ -147,7 +144,7 @@ export default function Friends() {
                               </td>
                             </tr>
                           ))}
-                      </tbody>
+                      </tbody> */}
                     </table>
                   </div>
                 </div>

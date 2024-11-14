@@ -21,6 +21,10 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: ":referralId",
+        element: <Home />,
+      },
+      {
         path: "boost",
         element: <Boost />,
       },

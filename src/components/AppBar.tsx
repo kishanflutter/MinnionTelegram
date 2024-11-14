@@ -13,11 +13,15 @@ const links = [
 export default function AppBar() {
   const { pathname } = useLocation();
   return (
-    <div className="fixed left-0 z-10 w-full px-5 py-0 bottom-2">
+    
+    // <div className="fixed left-0 z-10 w-full px-5 py-0 bottom-2">
+    <div className="fixed left-0  w-full px-5 py-0 bottom-2">
+
+{/* <div className="flex items-center w-full p-2 gap-2 max-w-lg mx-auto rounded-[35px] "> */}
 
 
-<div className="card" style={{backgroundColor:'white'}}>
-<div className="flex flex-row" >
+<div className="flex items-center w-full p-2 gap-4 max-w-lg mx-auto card" style={{backgroundColor:'white'  }}>
+<div className="flex flex-row gap-4" >
         {
         links.map((link, key) => (
           <Link
@@ -50,5 +54,6 @@ export default function AppBar() {
         </div>
       </div>
    </div>
+  //  </div>
   );
 }

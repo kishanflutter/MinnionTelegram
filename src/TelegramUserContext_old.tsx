@@ -1,12 +1,9 @@
 // UserContext.tsx
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import axios from 'axios';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';  // Import the CSS for toast styles
-import { ToastContainer } from 'react-toastify';
 
 interface UserProfile {
-  id: string
+  id:string
   first_name: string;
   last_name: string;
   username: string;
@@ -31,32 +28,32 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
     axios.get(`https://api.telegram.org/bot${botId}/getChat?chat_id=${userId}`)
       .then((response: any) => {
-        const result = response?.data?.result;
-
-        if (result?.photo?.small_file_id) {
-          const fileId = result?.photo.small_file_id;
+        const result = response.data.result;
+        
+        if (result.photo?.small_file_id) {
+          const fileId = result.photo.small_file_id;
           axios.get(`https://api.telegram.org/bot${botId}/getFile?file_id=${fileId}`)
             .then((fileResponse: any) => {
               const filePath = fileResponse.data.result.file_path;
               const photoUrl = `https://api.telegram.org/file/bot${botId}/${filePath}`;
 
               setUser({
-                id: result?.id,
-                first_name: result?.first_name,
-                last_name: result?.last_name == null ? "" : result?.last_name,
-                username: result?.username,
+                id:result.id,
+                first_name: result.first_name,
+                last_name: result.last_name==null?"":result.last_name,
+                username: result.username,
                 photoUrl: photoUrl
               });
             });
         }
-        else {
-          setUser({
-            id: result?.id,
-            first_name: result?.first_name,
-            last_name: result?.last_name == null ? "" : result?.last_name,
-            username: result?.username,
-            photoUrl: ""
-          });
+        else{
+            setUser({
+                id:result.id,
+                first_name: result.first_name,
+                last_name: result.last_name==null?"":result.last_name,
+                username: result.username,
+                photoUrl: ""
+              });
         }
       })
       .catch(error => console.error(error));
@@ -69,7 +66,6 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   return (
     <TelegramUserContext.Provider value={{ user, fetchUser }}>
       {children}
-      <ToastContainer />
     </TelegramUserContext.Provider>
   );
 };

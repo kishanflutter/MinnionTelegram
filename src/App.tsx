@@ -8,6 +8,7 @@ import React, { useEffect, useState } from 'react';
 
 import axios from 'axios';
 import { UserProvider } from "./TelegramUserContext";
+import PlayOnYourMobile from "./pages/PlayOnYourMobile";
 //import PlayOnYourMobile from "./pages/PlayOnYourMobile";
 //import { User } from "lucide-react";
 //import { $http, setBearerToken } from "./lib/http";
@@ -22,6 +23,12 @@ import { UserProvider } from "./TelegramUserContext";
 // const isDisktop = import.meta.env.DEV
 //   ? true
 //   : Telegram.WebApp.platform === "tdesktop";
+
+
+const webApp = window.Telegram.WebApp;
+const isDisktop = import.meta.env.DEV
+  ? false
+  : Telegram.WebApp.platform === "tdesktop";
 
 function App() {
   //const userStore = useUserStore();
@@ -138,14 +145,30 @@ function App() {
 
  
  setInterval(() => {
+
+  
   setShowSplashScreen(false);
   }, 1000);
 
  
+ 
 
   if (showSplashScreen) return <SplashScreen />;
 
+  // if (Telegram.WebApp.platform=='android' || Telegram.WebApp.platform=='android' ) {
+   
 
+  //   return (
+  //     <UserProvider>
+  //     <RouterProvider router={router} />;
+  //     {/* Baaki components bhi yahan ho sakte hain */}
+  //   </UserProvider>
+  //   );
+  // }
+  // else{
+  //   return <PlayOnYourMobile />;
+  // }
+ 
   return (
     <UserProvider>
     <RouterProvider router={router} />;

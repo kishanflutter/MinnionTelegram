@@ -46,28 +46,28 @@ export default function Friends() {
     }}
   >
       <div className="flex flex-col flex-1 w-full h-full px-6 py-8 pb-24 mt-12 ">
-        <h1 className="text-2xl font-bold text-center uppercase" style={{color : "white"}}>Friends</h1>
 
        
         
-        <div className="mt-4 space-y-2" >
-          <button className="flex items-center w-full gap-4 px-4 py-2 bg-white rounded-xl " >
-            <img
+       <div className=" flex flex-col w-full" style={{alignItems:"center"}}>
+       <img
               src="/images/chest.png"
-              height={"32px"}
-              width={"32px"}
+              height={"100px"}
+              width={"100px"}
 
             />
-            <div className="text-sm font-medium text-left" style={{color : "black"}}>
+            <div className="text-2xl  font-medium text-left" style={{color : "white"}}>
               <p>Invite a friend</p>
            
             </div>
-          </button>
         
-        </div>
+
+       </div>
+       
+       
         <div className="relative flex-1" >
-          <div className="absolute inset-0 w-full h-[calc(100%-1rem)] py-6 mt-4 overflow-y-scroll" style={{color : "white"}}>
-            {!showMoreBonuses ? (
+          <div className="absolute inset-0 w-full h-[calc(100%-1rem)] py-6 mt-4 " style={{color : "green"}}>
+            {/* {!showMoreBonuses ? (
               <div className="text-center" style={{color : "white"}}>
                 <button
                   className="rounded-full border-2 border-[#000]/10 text-[#000] text-xs font-bold py-2.5 px-4"style={{color : "white"}}
@@ -82,7 +82,7 @@ export default function Friends() {
                   className="mt-8 text-sm font-bold uppercase" style={{color : "white"}}
                   onClick={() => setShowMoreBonuses((value) => !value)}
                 >
-                  Bonus for leveling up
+                  Team Refferal
                 </p>
                 <div className="relative flex-1 mt-6 min-h-60">
                   <div className="absolute inset-0 w-full h-full overflow-y-auto">
@@ -96,15 +96,12 @@ export default function Friends() {
 
                         </tr>
                       </thead>
-                      {/* <tbody>
-                        {levels
-                          .filter((item) => referral.base.levelUp[item.level])
-                          .map((item, key) => (
-                            <tr
-                              key={key}
+                      <tbody>
+                      <tr
+                             
                               className="border-b border-[#000]/10"
                             >
-                              <td className="px-2 py-2 text-xs" style={{color : "black"}}>{item.name}</td>
+                              <td className="px-2 py-2 text-xs" style={{color : "black"}}>{"item.name"}</td>
                               <td className="px-2 py-2" style={{color : "black"}}>
                                 <div className="flex items-center justify-end gap-1">
                                  
@@ -137,19 +134,82 @@ export default function Friends() {
                                 </div>
                               </td>
                             </tr>
-                          ))}
-                      </tbody> */}
+                      </tbody>
                     </table>
                   </div>
                 </div>
               </>
             )}
-          
+           */}
+
+
+<>
+                <p
+                  className="flex flex-col w-full" style={{color : "white" ,alignItems:"center"}}
+                 // onClick={() => setShowMoreBonuses((value) => !value)}
+                >
+                  Team Refferal
+                </p>
+                <div className="relative flex-1 mt-6 min-h-60">
+                  <div className="absolute inset-0 w-full h-full overflow-y-auto">
+                    <table className="w-full">
+                      <thead className="text-xs text-white/30">
+                        <tr className="border-b border-[#000]/10">
+                          <th className="px-2 py-2 text-left" style={{color : "white"}}>Account</th>
+                          <th className="px-2 py-2 text-right" style={{color : "white"}}>Level</th>
+                          <th className="px-2 py-2 text-right" style={{color : "white"}}>Stack Amnt.</th>
+                          <th className="px-2 py-2 text-right" style={{color : "white"}}>DateTime</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <tr
+                             
+                              className="border-b border-[#000]/10"
+                            >
+                              <td className="px-2 py-2 text-xs" style={{color : "black"}}>{"item.name"}</td>
+                              <td className="px-2 py-2" style={{color : "black"}}>
+                                <div className="flex items-center justify-end gap-1">
+                                 
+                                  <span className="text-xs font-medium text-primary" style={{color : "black"}}>
+                                  
+                                  {(
+                                     0
+                                    ).toLocaleString()}
+                                  </span>
+                                </div>
+                              </td>
+                              <td className="px-2 py-2">
+                                <div className="flex items-center justify-end gap-1">
+                                 
+                                  <span className="text-xs font-medium text-primary" style={{color : "black"}}>
+                                    {(
+                                     0
+                                    ).toLocaleString()}
+                                  </span>
+                                </div>
+                              </td>
+                              <td className="px-2 py-2">
+                                <div className="flex items-center justify-end gap-1">
+                                 
+                                  <span className="text-xs font-medium text-primary" style={{color : "black"}}>
+                                    {(
+                                    "01/01/2024"
+                                    ).toLocaleString()}
+                                  </span>
+                                </div>
+                              </td>
+                            </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </>
           </div>
         </div>
         <div className="flex gap-3 mt-4">
-          <Button
-            className="flex-shrink-0"
+          <div
+            className=" card"
             style={{color:"white"}}
             onClick={() => {
               copy(referralLink);
@@ -157,7 +217,7 @@ export default function Friends() {
             }}
           >
             <CopyIcon className="w-5 h-5" />
-          </Button>
+          </div>
           <Button
             className="flex-1"
             onClick={() =>

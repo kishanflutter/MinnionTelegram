@@ -3,6 +3,7 @@ import React from 'react';
 
 // Data types definition
 export interface BoosterPlanItem {
+  icon:string
   boostPrice: string;
   totalClaim: string;
   dailyClaimLimit: string;

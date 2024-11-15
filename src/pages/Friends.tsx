@@ -19,7 +19,7 @@ const shareMessage = encodeURI(
 
 export default function Friends() {
   const [, copy] = useCopyToClipboard();
-  const { referral, levels } = uesStore();
+  //const { referral, levels } = uesStore();
   const { user } = useUser();
 
 
@@ -39,53 +39,47 @@ export default function Friends() {
     <div
     className="flex-1 px-5 pb-20 bg-center bg-cover"
     style={{
-      backgroundImage: `url(${levelConfig.bg[1]})`,
+      background: "linear-gradient(to bottom, #f39f1b , #f39f1b, black )",
+
+        backgroundSize: 'cover',
+        backgroundPosition: '50% 50%'
     }}
   >
       <div className="flex flex-col flex-1 w-full h-full px-6 py-8 pb-24 mt-12 ">
-        <h1 className="text-2xl font-bold text-center uppercase" style={{color : "black"}}>Friends</h1>
-        <p className="mt-2.5 font-medium text-center" style={{color : "black"}}>
-          You and your friend will receive bonuses.
-        </p>
-        <div className="mt-4 space-y-2" style={{color : "black"}}>
-          <button className="flex items-center w-full gap-4 px-4 py-2 bg-black/10 rounded-xl">
+        <h1 className="text-2xl font-bold text-center uppercase" style={{color : "white"}}>Friends</h1>
+
+       
+        
+        <div className="mt-4 space-y-2" >
+          <button className="flex items-center w-full gap-4 px-4 py-2 bg-white rounded-xl " >
             <img
               src="/images/chest.png"
-              alt="chest"
-              className="object-contain w-9 h-9 mix-blend-screen" 
+              height={"32px"}
+              width={"32px"}
+
             />
             <div className="text-sm font-medium text-left" style={{color : "black"}}>
               <p>Invite a friend</p>
-              <div className="flex items-center space-x-1">
-                <img
-                  src="/images/coin.png"
-                  alt="coin"
-                  className="object-contain w-5 h-5"
-                />
-                <span className="font-bold text-primary" style={{color : "black"}}>
-                  +{referral.base.welcome.toLocaleString()}
-                </span>
-                <span className="text-sm" style={{color : "black"}}>for you and your friend</span>
-              </div>
+           
             </div>
           </button>
         
         </div>
         <div className="relative flex-1" >
-          <div className="absolute inset-0 w-full h-[calc(100%-1rem)] py-6 mt-4 overflow-y-scroll" style={{color : "black"}}>
+          <div className="absolute inset-0 w-full h-[calc(100%-1rem)] py-6 mt-4 overflow-y-scroll" style={{color : "white"}}>
             {!showMoreBonuses ? (
-              <div className="text-center" style={{color : "black"}}>
+              <div className="text-center" style={{color : "white"}}>
                 <button
-                  className="rounded-full border-2 border-[#000]/10 text-[#000] text-xs font-bold py-2.5 px-4"style={{color : "black"}}
+                  className="rounded-full border-2 border-[#000]/10 text-[#000] text-xs font-bold py-2.5 px-4"style={{color : "white"}}
                   onClick={() => setShowMoreBonuses((value) => !value)}
                 >
-                  More bonuses
+                  Team Refferal
                 </button>
               </div>
             ) : (
               <>
                 <p
-                  className="mt-8 text-sm font-bold uppercase" style={{color : "black"}}
+                  className="mt-8 text-sm font-bold uppercase" style={{color : "white"}}
                   onClick={() => setShowMoreBonuses((value) => !value)}
                 >
                   Bonus for leveling up
@@ -93,12 +87,12 @@ export default function Friends() {
                 <div className="relative flex-1 mt-6 min-h-60">
                   <div className="absolute inset-0 w-full h-full overflow-y-auto">
                     <table className="w-full">
-                      <thead className="text-xs text-black/30">
+                      <thead className="text-xs text-white/30">
                         <tr className="border-b border-[#000]/10">
-                          <th className="px-2 py-2 text-left" style={{color : "black"}}>Account</th>
-                          <th className="px-2 py-2 text-right" style={{color : "black"}}>Level</th>
-                          <th className="px-2 py-2 text-right" style={{color : "black"}}>Stack Amnt.</th>
-                          <th className="px-2 py-2 text-right" style={{color : "black"}}>DateTime</th>
+                          <th className="px-2 py-2 text-left" style={{color : "white"}}>Account</th>
+                          <th className="px-2 py-2 text-right" style={{color : "white"}}>Level</th>
+                          <th className="px-2 py-2 text-right" style={{color : "white"}}>Stack Amnt.</th>
+                          <th className="px-2 py-2 text-right" style={{color : "white"}}>DateTime</th>
 
                         </tr>
                       </thead>
@@ -156,6 +150,7 @@ export default function Friends() {
         <div className="flex gap-3 mt-4">
           <Button
             className="flex-shrink-0"
+            style={{color:"white"}}
             onClick={() => {
               copy(referralLink);
               toast.success("Referral link copied to clipboard");

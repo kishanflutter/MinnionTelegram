@@ -20,7 +20,7 @@ export default function UserGameDetails({
         <div className="inline-flex items-center space-x-1.5 text-white font-bold">
          
           {/* <span className="text-sm" style={{color : "black"}}>{10000}</span> */}
-          <span className="text-sm" style={{color : "black"}}>+{user?.earn_per_tap}</span>
+          <span className="text-sm" style={{color : "black"}}>+{1}</span>
         </div>
         <p className="mb-1 text-xs text-center" style={{color : "black"}}>Earn Per Tap</p>
       </div>

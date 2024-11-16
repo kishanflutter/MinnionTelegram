@@ -171,7 +171,7 @@ function App() {
  
   return (
     <UserProvider>
-    <RouterProvider router={router} />;
+    <RouterProvider router={router} />
     {/* Baaki components bhi yahan ho sakte hain */}
   </UserProvider>
   );

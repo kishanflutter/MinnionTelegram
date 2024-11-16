@@ -17,7 +17,7 @@ export default function Home() {
   // State variables
   const [address, setAddress] = useState('0xB4647b856CB9C3856d559C885Bed8B46e08464b11');
   const [status, setStatus] = useState(1);
-  const [username, setUsername] = useState('xeer');
+  const [username, setUsername] = useState(1);
   const [referralId, setReferralId] = useState(routeReferralId || '');
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -38,7 +38,7 @@ export default function Home() {
   const handleClick = async (referralId: string) => {
     setReferralId(referralId);
     try {
-      const res = await axios.post('http://192.168.1.6:8444/api/minion', {
+      const res = await axios.post<ResponseData>(import.meta.env.VITE_APP_BACKEND_URL, {
         method: "user",
         submethod: "insert",
         address: address,
@@ -69,11 +69,11 @@ export default function Home() {
 
   // Define GetDataParams and UserData interfaces
   interface GetDataParams {
-    username: string;
+    username: number;
   }
 
   interface UserData {
-    username: string;
+    username: number;
     email: string;
     // Add any other user properties you expect to get from the API
   }
@@ -85,7 +85,7 @@ export default function Home() {
 
   const getData = async ({ username }: GetDataParams): Promise<void> => {
     try {
-      const res = await axios.post<ResponseData>('http://192.168.1.6:8444/api/minion', {
+      const res = await axios.post<ResponseData>(import.meta.env.VITE_APP_BACKEND_URL, {
         method: "user",
         submethod: "getbyid",
         username: username,

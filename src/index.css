@@ -92,14 +92,14 @@
   justify-content: space-between;
 
   border-radius: 16px;
-  background: linear-gradient(
+  
+  /* background: linear-gradient(
     to bottom,
     #faaf35
     #FFFFFF
 
-    /* rgba(255, 255, 255, .75), */
-    /* rgba(255, 255, 255, .32) */
-  );
+   
+  ); */
   box-shadow:
     inset 4px 4px 5px 0 rgba(255, 255, 255, .25),
     inset -4px -4px 5px 0 rgba(0, 0, 0, 0.125);

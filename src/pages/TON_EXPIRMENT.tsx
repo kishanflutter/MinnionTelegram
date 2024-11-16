@@ -3,91 +3,96 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useTonConnectUI } from '@tonconnect/ui-react';
 import levelConfig from "@/config/level-config";
+import ListItem from '@/components/ListItem';
+import { FaFacebook, FaInstagram, FaLink, FaSitemap, FaTelegram, FaWindowClose, FaYoutube } from 'react-icons/fa';
 
 
 
-function  TONWALLET  () {
+function TONWALLET() {
 
-    const [tonConnectUI] = useTonConnectUI();
-    const [tonWalletAddress, setTonWalletAddress] = useState<string | null>(null);
-    const [isLoading, setIsLoading] = useState(true);
+  const [tonConnectUI] = useTonConnectUI();
+  const [tonWalletAddress, setTonWalletAddress] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
 
-    
-  
-    const handleWalletConnection = useCallback((address: string) => {
-      setTonWalletAddress(address);
-      console.log("Wallet connected successfully!");
-      setIsLoading(false);
-    }, []);
-  
-    const handleWalletDisconnection = useCallback(() => {
-      setTonWalletAddress(null);
-      console.log("Wallet disconnected successfully!");
-      setIsLoading(false);
-    }, []);
-  
-    useEffect(() => {
-      const checkWalletConnection = async () => {
-        if (tonConnectUI.account?.address) {
-          handleWalletConnection(tonConnectUI.account?.address);
-        } else {
-          handleWalletDisconnection();
-        }
-      };
-  
-      checkWalletConnection();
-  
-      const unsubscribe = tonConnectUI.onStatusChange((wallet) => {
-        if (wallet) {
-          handleWalletConnection(wallet.account.address);
-        } else {
-          handleWalletDisconnection();
-        }
-      });
-  
-      return () => {
-        unsubscribe();
-      };
-    }, [tonConnectUI, handleWalletConnection, handleWalletDisconnection]);
-  
-    const handleWalletAction = async () => {
-      if (tonConnectUI.connected) {
-        setIsLoading(true);
-        await tonConnectUI.disconnect();
+
+
+  const handleWalletConnection = useCallback((address: string) => {
+    setTonWalletAddress(address);
+    console.log("Wallet connected successfully!");
+    setIsLoading(false);
+  }, []);
+
+  const handleWalletDisconnection = useCallback(() => {
+    setTonWalletAddress(null);
+    console.log("Wallet disconnected successfully!");
+    setIsLoading(false);
+  }, []);
+
+  useEffect(() => {
+    const checkWalletConnection = async () => {
+      if (tonConnectUI.account?.address) {
+        handleWalletConnection(tonConnectUI.account?.address);
       } else {
-        await tonConnectUI.openModal();
+        handleWalletDisconnection();
       }
     };
-  
-    const formatAddress = (address: string) => {
-      const tempAddress = address;
-      return `${tempAddress.slice(0, 4)}...${tempAddress.slice(-4)}`;
+
+    checkWalletConnection();
+
+    const unsubscribe = tonConnectUI.onStatusChange((wallet) => {
+      if (wallet) {
+        handleWalletConnection(wallet.account.address);
+      } else {
+        handleWalletDisconnection();
+      }
+    });
+
+    return () => {
+      unsubscribe();
     };
-  
-    if (isLoading) {
-      return (
-        <main className="flex min-h-screen flex-col items-center justify-center">
-          <div className="bg-gray-200 text-gray-700 font-bold py-2 px-4 rounded">
-            Loading...
-          </div>
-        </main>
-      );
+  }, [tonConnectUI, handleWalletConnection, handleWalletDisconnection]);
+
+  const handleWalletAction = async () => {
+    if (tonConnectUI.connected) {
+      setIsLoading(true);
+      await tonConnectUI.disconnect();
+    } else {
+      await tonConnectUI.openModal();
     }
-  
+  };
+
+  const formatAddress = (address: string) => {
+    const tempAddress = address;
+    return `${tempAddress.slice(0, 4)}...${tempAddress.slice(-4)}`;
+  };
+
+  if (isLoading) {
     return (
-     // <main className="flex min-h-screen flex-col items-center justify-center">
-           <div
-    className="flex-1 px-5 pb-20 bg-center bg-cover"
-    style={{
-      backgroundImage: `url(${levelConfig.bg[1]})`,
-    }}
-  >
-    <div className="flex flex-col flex-1 w-full h-full px-6 py-8 pb-24 mt-12">
-     
-      <h1 className="mt-4 text-2xl font-bold text-center uppercase" >
-        AirDrop
-      </h1>
+      <main className="flex min-h-screen flex-col items-center justify-center">
+        <div className="bg-gray-200 text-gray-700 font-bold py-2 px-4 rounded">
+          Loading...
+        </div>
+      </main>
+    );
+  }
+
+  return (
+    // <main className="flex min-h-screen flex-col items-center justify-center">
+    <div
+      className="flex-1 px-5 pb-20 bg-center bg-cover"
+      style={{
+        background: "linear-gradient(to bottom, #f39f1b , #f39f1b, black )",
+
+        backgroundSize: 'cover',
+        backgroundPosition: '50% 50%'
+      }}
+    >
+      <div className="flex flex-col flex-1 w-full h-full px-6 py-8 pb-24 mt-1">
+
+        <h1 className="mt-4 text-2xl font-bold text-center uppercase" style={{ marginTop: "1px", marginBottom: "10px", fontSize: "22px" }} >
+          Minnion
+        </h1>
         {tonWalletAddress ? (
           <div className="flex flex-col items-center">
             <p className="mb-4">Connected: {formatAddress(tonWalletAddress)}</p>
@@ -107,33 +112,116 @@ function  TONWALLET  () {
           </button>
         )}
 
-
-<label style={styles.addressLabelyello}>
-         
-         Why do we use it?
-                 </label>
-        <label style={styles.addressLabel}>
-         It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-        </label>
-        <label style={styles.addressLabelyello}>
-         
-         Why do we use it?
-                 </label>
-        <label style={styles.addressLabel}>
-                  It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                 </label>
-                 <label style={styles.addressLabelyello}>
-         
-         Why do we use it?
-                 </label>
-        <label style={styles.addressLabel}>
-                  It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                 </label>
-
+        <div style={{ marginTop: "10px", marginBottom: "10px", fontSize: "18px" }}>
+          <p> About Us</p>
         </div>
+
+
+        <div className="card"
+
+          onClick={() =>
+
+            Telegram.WebApp.openLink(
+              `https://www.youtube.com`
+            )
+          }
+        >
+          <div className="flex items-center gap-2 px-3 py-2" style={{ justifyContent: "space-between", color: "white" }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "start", gap: "1px", color: 'black', }}>
+              <div> Get Minnion Latest News</div>
+            </div>
+            <div className="card p-2" color="white">
+              <FaYoutube style={{ color: "red", fontSize: "32px" }} />
+            </div>
+          </div>
         </div>
-     // </main>
-    );
+
+
+        <div className="card"
+
+          onClick={() =>
+
+            Telegram.WebApp.openLink(
+              `https://www.youtube.com`
+            )
+          }
+          style={{ marginTop: "10px", marginBottom: "10px" }}
+        >
+          <div className="flex items-center gap-2 px-3 py-2" style={{ justifyContent: "space-between", color: "white" }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "start", gap: "1px", color: 'black', }}>
+              <div> Get Minnion Latest News</div>
+            </div>
+            <div className="card p-2" color="white">
+              <FaFacebook style={{ color: "blue", fontSize: "32px" }} />
+            </div>
+          </div>
+        </div>
+
+
+        <div className="card"
+
+          onClick={() =>
+
+            Telegram.WebApp.openLink(
+              `https://www.youtube.com`
+            )
+          }
+          style={{ marginTop: "10px", marginBottom: "10px" }}
+        >
+          <div className="flex items-center gap-2 px-3 py-2" style={{ justifyContent: "space-between", color: "white" }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "start", gap: "1px", color: 'black', }}>
+              <div> Get Minnion Latest News</div>
+            </div>
+            <div className="card p-2" color="white">
+              <FaInstagram style={{ color: "red", fontSize: "32px" }} />
+            </div>
+          </div>
+        </div>
+
+        <div className="card"
+
+          onClick={() =>
+
+            Telegram.WebApp.openLink(
+              `https://www.youtube.com`
+            )
+          }
+          style={{ marginTop: "10px", marginBottom: "10px" }}
+        >
+          <div className="flex items-center gap-2 px-3 py-2" style={{ justifyContent: "space-between", color: "white" }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "start", gap: "1px", color: 'black', }}>
+              <div> Get Minnion Latest News</div>
+            </div>
+            <div className="card p-2" color="white">
+              <FaTelegram style={{ color: "blue", fontSize: "32px" }} />
+            </div>
+          </div>
+        </div>
+
+        <div className="card"
+
+          onClick={() =>
+
+            Telegram.WebApp.openLink(
+              `https://www.youtube.com`
+            )
+          }
+          style={{ marginTop: "10px", marginBottom: "10px" }}
+        >
+          <div className="flex items-center gap-2 px-3 py-2" style={{ justifyContent: "space-between", color: "white" }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "start", gap: "1px", color: 'black', }}>
+              <div> Get Minnion Latest News</div>
+            </div>
+            <div className="card p-2" color="white">
+              <FaLink style={{ color: "blue", fontSize: "32px" }} />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    // </main>
+  );
 };
 
 
@@ -160,7 +248,7 @@ const styles = {
     fontSize: '16px',
     transition: 'background-color 0.3s',
   },
-  
+
   addressLabel: {
     marginTop: '5px',
     color: 'black',
